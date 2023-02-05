@@ -1,0 +1,63 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>USA Climate Zones & Major Cities</title>
+<link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/css/main.css">
+<script src="https://js.arcgis.com/4.18/"></script>
+
+<style>
+html,
+body,
+#viewDiv {
+padding: 0;
+margin: 0;
+height: 100%;
+width: 100%
+}
+</style>
+
+<script>
+require([
+"esri/WebScene",
+"esri/views/SceneView",
+"esri/Camera",
+"esri/widgets/Home",
+"dojo/domReady!"
+], function(WebScene, SceneView, Camera, Home) {
+    
+var scene = new WebScene({
+portalItem:{
+id:"6a094c8096ca4ac5ad9db628b7caf41b"}
+});
+
+var camera = new Camera({
+position: [
+-100,
+40,
+20000000
+],
+tilt:0,
+heading: 0
+})
+
+var view = new SceneView({
+container: "viewDiv",
+map: scene,
+viewingMode:"global",
+camera: camera,
+cameraTrackingEnabled: false
+});
+
+var homeBtn = new Home({
+view: view
+});
+view.ui.add(homeBtn, "top-left");
+});
+</script>
+</head>
+
+<body>
+<div id="viewDiv"></div>
+</body>
+</html>
